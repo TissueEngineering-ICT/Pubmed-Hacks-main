@@ -1,0 +1,63 @@
+{% extends "paper_abstract_app/base.html" %}
+
+{% block title %}paper_abstract{% endblock title %}
+
+{% block content %}
+
+<div class="sort-button-container">
+  <button onclick="location.href='sort'" class="sort-button">Sort Papers</button>
+</div>
+
+{% for Article in Articles %}
+<main>
+  <div class="wrapper">
+    <div class="container">
+      <div class="box-pmid">
+        <p class="title">PMID</p>     
+        <p class="text">{{Article.PMID}}</p>
+      </div>
+
+      <div class="box-title">
+        <p class="text">{{Article.Title}}</p>
+      </div>
+
+      <div class="box-author">
+        <p class="text">{{Article.Author}}</p>
+        
+      </div>
+
+      <div class="box-abstract">
+        <p class="title">Abstract</p>
+        <p class="text">{{Article.Abstract|safe}}</p>
+      </div>
+
+      <div class="box-journal"> 
+        <p class="title">Journal</p>
+        <p class="text">{{Article.journal}}</p>
+      </div>
+
+      <div class="box-impact-factor">
+        <p class="title">SJR</p>
+        <p class="text">{{Article.journal.impact_factor}}</p>
+      </div>
+
+      <div class="box-date">
+        <p class="title">Publish Date</p>
+        <p class="text">{{Article.Date_publish}}</p>
+      </div>
+
+      <div class="box-doi">
+        <p class="title">DOI</p>
+        <a href="{{Article.DOI}}">{{Article.DOI}}</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <div class="box-button">
+    <button onclick="location.href='export'" type="submit">Export to CSV</button>
+  </div>
+</main>
+
+
+
+{% endblock %}

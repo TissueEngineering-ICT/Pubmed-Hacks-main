@@ -1,0 +1,19 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'registration/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+</head>
+
+<div class="signup-container">
+    <div class="signup">
+        <h1>Sign Up</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required="required" />
+            <input type="password" name="password" placeholder="Password" required="required" />
+            <input type="email" name="email" placeholder="Email" required="required" />
+            <button type="submit" class="btn btn-primary btn-block btn-large">Sign Up</button>
+        </form>
+    </div>
+</div>
+
